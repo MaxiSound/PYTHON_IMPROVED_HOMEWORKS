@@ -17,6 +17,8 @@ def csv_gen(a=randint(100, 1000)):
         for i in range(a):
             lst = [int(randint(1, 100)) for i in range(3)]
             wr.writerow(lst)
+
+
 def json_deco(func):
     result = {}
     with (open(f"source.csv", 'r', encoding='UTF-8') as f,
@@ -27,6 +29,8 @@ def json_deco(func):
                 result[",".join(i)] = (func(*(int(j) for j in i)))
         json.dump(result, f2, indent=2)
     return func
+
+
 def deco_csv_source(func):
     result = {}
     with open(f"source.csv", 'r', encoding='UTF-8') as f:
@@ -36,6 +40,8 @@ def deco_csv_source(func):
         for k, v in result.items():
             print(f"Аргументы: {k} Результат {v}")
     return func
+
+
 @json_deco
 @deco_csv_source
 def task(a, b, c):
@@ -50,6 +56,8 @@ def task(a, b, c):
     else:
         x = (- b / (2 * a))
         return [f"{x}+ i*{sqrt_val}", f"{x}- i*{sqrt_val}"]
+
+
 if __name__ == "__main__":
     csv_gen()
     task
