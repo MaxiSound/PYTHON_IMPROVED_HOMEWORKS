@@ -26,8 +26,8 @@ def my_func(numbers, names, result):
         open(numbers, 'r', encoding='utf-8') as nums,
         open(names, 'r', encoding='utf-8') as nam,
         open(result, 'w', encoding='utf-8') as res
-    )
-    len_nam = sum(1 for _ in nam)
+    ):
+        len_nam = int.sum(1 for _ in nam)
     print(len_nam)
     len_nums = sum(1 for _ in nums)
     print(len_nums)
@@ -36,12 +36,12 @@ def my_func(numbers, names, result):
         print(name)
         number = read_per_line(nums)
         print(number)
-         a, b = map(float, number.rstrip().split('|'))
-          temp = a*b
-           if temp < 0:
-                res.write(f"{name.lower()} : {abs(temp)}\n")
-            else:
-                res.write(f"{name.upper()} : {int(temp)}\n")
+        a, b = map(float, number.rstrip().split('|'))
+        temp = a*b
+        if temp < 0:
+            res.write(f"{name.lower()} : {abs(temp)}\n")
+        else:
+            res.write(f"{name.upper()} : {int(temp)}\n")
 
 
 my_func('numbers.txt', 'names.txt', 'result.txt')
